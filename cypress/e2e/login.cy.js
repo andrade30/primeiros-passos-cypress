@@ -1,12 +1,17 @@
 describe('Orange HRM Tests', () => {
 
+  const selectorList = {
+    usernameField: "input[placeholder='Username']",
+    passwordField: "input[placeholder='Password']"
+  }
+
   beforeEach(() => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
   });
 
   it('Login - Success', () => {
-    cy.get("input[placeholder='Username']").type('Admin')
-    cy.get("input[placeholder='Password']").type('admin123')
+    cy.get(selectorList.usernameField).type('Admin')
+    cy.get(selectorList.passwordField).type('admin123')
 
     cy.contains('button', 'Login').click()
 
@@ -15,8 +20,8 @@ describe('Orange HRM Tests', () => {
   })
 
   it('Login - Fail', () => {
-    cy.get("input[placeholder='Username']").type('Admin')
-    cy.get("input[placeholder='Password']").type('123')
+    cy.get(selectorList.usernameField).type('Admin')
+    cy.get(selectorList.passwordField).type('123')
 
     cy.contains('button', 'Login').click()
 
