@@ -1,3 +1,5 @@
+import userData from '../fixtures/users/userData.json'
+
 describe('Orange HRM Tests', () => {
 
   const selectorList = {
@@ -10,8 +12,8 @@ describe('Orange HRM Tests', () => {
   });
 
   it('Login - Success', () => {
-    cy.get(selectorList.usernameField).type('Admin')
-    cy.get(selectorList.passwordField).type('admin123')
+    cy.get(selectorList.usernameField).type(userData.userSuccess.username)
+    cy.get(selectorList.passwordField).type(userData.userSuccess.password)
 
     cy.contains('button', 'Login').click()
 
@@ -20,8 +22,8 @@ describe('Orange HRM Tests', () => {
   })
 
   it('Login - Fail', () => {
-    cy.get(selectorList.usernameField).type('Admin')
-    cy.get(selectorList.passwordField).type('123')
+    cy.get(selectorList.usernameField).type(userData.userFail.username)
+    cy.get(selectorList.passwordField).type(userData.userFail.password)
 
     cy.contains('button', 'Login').click()
 
